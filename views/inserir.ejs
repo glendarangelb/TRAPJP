@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Inserir Dados</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2><i class="fas fa-pen"></i> Inserir Dados</h2>
+
+      <form action="/carregar-campos" method="POST">
+        <label>Banco:</label>
+        <input type="text" name="db" value="<%= typeof db !== 'undefined' && db ? db : '' %>" required>
+
+        <label>Tabela:</label>
+        <input type="text" name="tabela" value="<%= typeof tabela !== 'undefined' && tabela ? tabela : '' %>" required>
+
+        <button type="submit"><i class="fas fa-cogs"></i> Carregar Campos</button>
+      </form>
+
+      <% if (campos && campos.length > 0) { %>
+        <form action="/inserir-dados" method="POST">
+          <input type="hidden" name="db" value="<%= db %>">
+          <input type="hidden" name="tabela" value="<%= tabela %>">
+          <% campos.forEach(campo => { %>
+            <label><%= campo %>:</label>
+            <input type="text" name="<%= campo %>" required>
+          <% }) %>
+          <button type="submit"><i class="fas fa-check-circle"></i> Inserir</button>
+        </form>
+      <% } %>
+    </div>
+
+    <div class="sidebar">
+      <h3><i class="fas fa-lightbulb"></i> Dica</h3>
+      <p>Os campos serão carregados automaticamente com base na tabela.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Registros</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2><i class="fas fa-list"></i> Listar Registros</h2>
+
+      <form action="/listar" method="POST">
+        <label>Banco:</label>
+        <input type="text" name="db" required>
+
+        <label>Tabela:</label>
+        <input type="text" name="tabela" required>
+
+        <button type="submit"><i class="fas fa-search"></i> Listar</button>
+      </form>
+
+      <% if (registros.length > 0) { %>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <% Object.keys(registros[0]).forEach(coluna => { %>
+                  <th><%= coluna %></th>
+                <% }) %>
+              </tr>
+            </thead>
+            <tbody>
+              <% registros.forEach(reg => { %>
+                <tr>
+                  <% Object.values(reg).forEach(valor => { %>
+                    <td><%= valor %></td>
+                  <% }) %>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } else { %>
+        <p>Nenhum registro encontrado.</p>
+      <% } %>
+    </div>
+
+    <div class="sidebar">
+      <h3><i class="fas fa-database"></i> Resultado</h3>
+      <p>Os registros da tabela informada aparecerão aqui.</p>
+    </div>
+  </div>
+</body>
+</html>

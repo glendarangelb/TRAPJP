@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Criar Tabela</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2><i class="fas fa-table"></i> Criar Tabela</h2>
+      <form action="/criar-tabela" method="POST">
+        <label>Nome do Banco:</label>
+        <input type="text" name="db" required>
+
+        <label>Nome da Tabela:</label>
+        <input type="text" name="tabela" required>
+        <small class="dica">Ex: <code>cliente</code>, <code>produto</code></small>
+
+        <h3>Campos</h3>
+        <label>Campo 1:</label>
+        <input type="text" name="campo1" required>
+        <label>Tipo (ex: VARCHAR(100)):</label>
+        <input type="text" name="tipo1" required>
+
+        <label>Campo 2:</label>
+        <input type="text" name="campo2">
+        <label>Tipo:</label>
+        <input type="text" name="tipo2">
+
+        <label>Campo 3:</label>
+        <input type="text" name="campo3">
+        <label>Tipo:</label>
+        <input type="text" name="tipo3">
+
+        <button type="submit"><i class="fas fa-check-circle"></i> Criar Tabela</button>
+      </form>
+    </div>
+    <div class="sidebar">
+      <h3><i class="fas fa-lightbulb"></i> Dicas</h3>
+      <p>Use nomes claros, no singular e com underline se necessário.</p>
+    </div>
+  </div>
+</body>
+</html>
